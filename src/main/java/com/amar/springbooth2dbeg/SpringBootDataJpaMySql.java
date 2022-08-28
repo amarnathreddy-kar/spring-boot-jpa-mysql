@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableEncryptableProperties
-public class SpringBootH2DbEgApplication {
+public class SpringBootDataJpaMySql {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootH2DbEgApplication.class, args);
+		SpringApplication.run(SpringBootDataJpaMySql.class, args);
 	}
 
 }
