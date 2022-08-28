@@ -1,5 +1,6 @@
 package com.amar.springbooth2dbeg.controller;
 
+import com.amar.springbooth2dbeg.exception.ResourceNotFoundException;
 import com.amar.springbooth2dbeg.model.Tutorial;
 import com.amar.springbooth2dbeg.repository.TutorialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class TutorialController {
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size){
-        try{
+
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
             Pageable paging = PageRequest.of(page, size);
             Page<Tutorial> pageTuts;
@@ -44,43 +45,31 @@ public class TutorialController {
             response.put("totalPages", pageTuts.getTotalPages());
 
             return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id){
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
-        if(tutorialData.isPresent()){
-            return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        Tutorial tutorial = tutorialRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tutorial not found with id: "+id));
+        return new ResponseEntity<>(tutorial, HttpStatus.OK);
     }
-
     @PostMapping("/tutorials")
     public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial){
-        try{
             Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
             return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
-        } catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @PutMapping("/tutorials/{id}")
-    public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial){
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
-        if(tutorialData.isPresent()){
-            Tutorial _tutorial = tutorialData.get();
+    public ResponseEntity<Tutorial> updateTutorial(
+            @PathVariable("id") long id,
+            @RequestBody Tutorial tutorial){
+        Tutorial _tutorial = tutorialRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException("Tutorial not found with id: "+id));
+
             _tutorial.setTitle(tutorial.getTitle());
             _tutorial.setDescription(tutorial.getDescription());
             _tutorial.setPublished(tutorial.isPublished());
             return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
     }
 
     @DeleteMapping("/tutorials")
@@ -107,10 +96,10 @@ public class TutorialController {
     public ResponseEntity<Map<String,Object>> findByPublished(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size
-    ){
+    ) {
         try {
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
-            Pageable paging = PageRequest.of(page,size);
+            Pageable paging = PageRequest.of(page, size);
 
             Page<Tutorial> pageTuts = tutorialRepository.findByPublished(true, paging);
             tutorials = pageTuts.getContent();
@@ -123,28 +112,9 @@ public class TutorialController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
