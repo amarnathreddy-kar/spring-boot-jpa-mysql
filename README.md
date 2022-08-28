@@ -27,6 +27,12 @@
 > Handling - 
 >> non-existent Get Request |  creating/updating with wrong fields  | delete non-existent tutorial
 
+
+### Adding logging suppport
+
+
+### Swagger API Documentation  
+
 ### Unit Testing Coverage
 
 
@@ -36,10 +42,6 @@
 ### JPA One-to-Many and Many-to-Many Association Mapping
 
 
-### Adding logging suppport
-
-
-### Swagger API Documentation  
 
 
 
