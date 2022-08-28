@@ -21,6 +21,8 @@
 * /api/tutorials?title=data&page=1&size=3: | pagination & filter by title containing ‘data’
 * /api/tutorials/published?page=2: | pagination & filter by ‘published’ status
 
+###### Database source password encrytion
+
 ### Error/ Exceptions Handling
 
 
