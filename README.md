@@ -1,6 +1,6 @@
 # spring-boot-jpa-mysql
 
-## Following resful routes implemenated:
+###### Following resful routes implemenated:
 
 |Methods	    |Urls	                                 | Actions                              			|
 |-------------- |----------------------------------------|--------------------------------------------------|
@@ -14,7 +14,7 @@
 | GET	        | /api/tutorials?title=[keyword]	     | find all Tutorials which title contains keyword	|
 
 
-## Paging Implemented, some sample resful-routes are as follows:
+##### Paging Implemented, some sample resful-routes are as follows:
 
 * /api/tutorials?page=1&size=5  |
 * /api/tutorials?size=5: | using default value for page
