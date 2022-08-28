@@ -21,10 +21,13 @@
 * /api/tutorials?title=data&page=1&size=3: | pagination & filter by title containing ‘data’
 * /api/tutorials/published?page=2: | pagination & filter by ‘published’ status
 
-###### Database source password encrytion
+##### Database source password encrytion
 
 ### Error/ Exceptions Handling
-
+> Handling: 
+	>> non-existent Get Request
+  >> creating/updating with wrong fields
+	>> delete non-existent tutorial
 
 ### Unit Testing Coverage
 
