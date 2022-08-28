@@ -25,9 +25,9 @@
 
 ### Error/ Exceptions Handling
 > Handling: 
-	>> non-existent Get Request
-  >> creating/updating with wrong fields
-	>> delete non-existent tutorial
+* non-existent Get Request
+* creating/updating with wrong fields
+* delete non-existent tutorial
 
 ### Unit Testing Coverage
 
