@@ -30,12 +30,11 @@
 ### Swagger Enabled
 ![Swagger-UI](https://user-images.githubusercontent.com/44445642/187128941-29905d5f-44a1-4c09-b8c1-21a88f1faccd.png)
 
-### Validation Support Implementation
-####> Input Validation
-* >> Title cannot be blank
-* >> Title can have a minimun of four and maxmimum of 15 characters
-######>> Description can have a maximum of 200 characters
-######>> Description Cannot contain special characters
+### Validation Support (User Input Validation)
+* Title cannot be blank
+* Title can have a minimun of four and maxmimum of 15 characters
+* Description can have a maximum of 200 characters
+* Description Cannot contain special characters
 
 
 
