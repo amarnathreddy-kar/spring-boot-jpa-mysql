@@ -23,9 +23,10 @@
 
 ##### Database source password encrytion
 
-### Error/ Exceptions Handling
-> Handling - 
->> non-existent Get Request |  creating/updating with wrong fields  | delete non-existent tutorial
+### Error/ Exceptions Handling -
+* non-existent Get Request
+* creating/updating with wrong fields  
+* delete non-existent tutorial
 
 ### Swagger Enabled
 ![Swagger-UI](https://user-images.githubusercontent.com/44445642/187128941-29905d5f-44a1-4c09-b8c1-21a88f1faccd.png)
