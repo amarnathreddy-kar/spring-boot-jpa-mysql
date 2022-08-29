@@ -32,8 +32,8 @@
 
 ### Validation Support Implementation
 ####> Input Validation
-######>> Title cannot be blank
-######>> Title can have a minimun of four and maxmimum of 15 characters
+* >> Title cannot be blank
+* >> Title can have a minimun of four and maxmimum of 15 characters
 ######>> Description can have a maximum of 200 characters
 ######>> Description Cannot contain special characters
 
