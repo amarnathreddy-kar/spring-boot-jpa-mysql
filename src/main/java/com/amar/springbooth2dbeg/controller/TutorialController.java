@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -54,7 +55,7 @@ public class TutorialController {
         return new ResponseEntity<>(tutorial, HttpStatus.OK);
     }
     @PostMapping("/tutorials")
-    public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial){
+    public ResponseEntity<Tutorial> createTutorial(@RequestBody @Valid Tutorial tutorial){
             Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
             return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
     }
@@ -62,7 +63,7 @@ public class TutorialController {
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> updateTutorial(
             @PathVariable("id") long id,
-            @RequestBody Tutorial tutorial){
+            @RequestBody @Valid Tutorial tutorial){
         Tutorial _tutorial = tutorialRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Tutorial not found with id: "+id));
 
